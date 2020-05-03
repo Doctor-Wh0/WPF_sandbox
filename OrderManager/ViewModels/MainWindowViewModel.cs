@@ -51,7 +51,7 @@ namespace OrderManager.ViewModels
             }
         }
 
-
+        #region commands
         private RelayCommand toHomeCommand;
         public RelayCommand ToHomeCommand
         {
@@ -61,7 +61,6 @@ namespace OrderManager.ViewModels
                   (toHomeCommand = new RelayCommand(sender =>
                   {
                       SelectedViewModel = viewModels.FirstOrDefault(i=> i is HomeViewModel);
-                      MessageBox.Show("Команда");
 
                   }));
             }
@@ -75,7 +74,6 @@ namespace OrderManager.ViewModels
                   (toOrdersCommand = new RelayCommand(sender =>
                   {
                       SelectedViewModel = viewModels.FirstOrDefault(i => i is OrdersViewModel);
-                      MessageBox.Show("Команда");
 
                   }));
             }
@@ -89,7 +87,6 @@ namespace OrderManager.ViewModels
                   (toAddOrderCommand = new RelayCommand(sender =>
                   {
                       SelectedViewModel = viewModels.FirstOrDefault(i => i is AddOrderViewModel);
-                      MessageBox.Show("Команда");
 
                   }));
             }
@@ -103,31 +100,23 @@ namespace OrderManager.ViewModels
                   (toChatCommand = new RelayCommand(sender =>
                   {
                       SelectedViewModel = viewModels.FirstOrDefault(i => i is ChatViewModel);
-                      MessageBox.Show("Команда");
 
                   }));
             }
         }
 
-
-
-
-        #region commands
-        private RelayCommand tabChangedCommand;
-        public RelayCommand TabChangedCommand
-        {
-            get
-            {
-                return tabChangedCommand ??
-                  (tabChangedCommand = new RelayCommand(sender =>
-                  {
-                      MessageBox.Show("Команда");
-                      Console.WriteLine("OKKKKKKKKKKKKKKKKKKKKKK");
-                  }));
-            }
-        }
-
-
+        //private RelayCommand tabChangedCommand;
+        //public RelayCommand TabChangedCommand
+        //{
+        //    get
+        //    {
+        //        return tabChangedCommand ??
+        //          (tabChangedCommand = new RelayCommand(sender =>
+        //          {
+        //              MessageBox.Show("Команда");
+        //          }));
+        //    }
+        //}
 
         #endregion
 

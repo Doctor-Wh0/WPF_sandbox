@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="AliceBlue">
-        <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False">
+        <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" Margin="10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="False" Header="Id" Width="50" Binding="{Binding Path=Id}"/>
                 <DataGridTextColumn IsReadOnly="False" Header="Город" Width="90" Binding="{Binding Path=City}"/>
@@ -18,7 +18,7 @@
                 <DataGridTextColumn IsReadOnly="False" Header="ФИО" Width="180" Binding="{Binding Path=FullName}"/>
                 <DataGridTextColumn IsReadOnly="False" Header="Телефон" Width="80" Binding="{Binding Path=Phone}"/>
                 <!--<DataGridCheckBoxColumn IsReadOnly="False" Header="Выполнен" Width="90"/>-->
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Выполнен" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox HorizontalAlignment="Center"

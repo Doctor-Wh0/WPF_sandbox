@@ -39,10 +39,10 @@ namespace OrderManager.ViewModels
 
         private static void Orders_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (App.client != null)
-            {
-                object obj = App.client.GetOrders();
-            }
+            //if (App.client != null)
+            //{
+            //    object obj = App.client.GetOrders();
+            //}
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add: // если добавление

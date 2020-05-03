@@ -48,7 +48,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FFDEDEDE">
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1010">
+        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1020">
             <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"/>
         </Grid>
         <Grid Height="60" VerticalAlignment="Top" Background="#FF13688D">
