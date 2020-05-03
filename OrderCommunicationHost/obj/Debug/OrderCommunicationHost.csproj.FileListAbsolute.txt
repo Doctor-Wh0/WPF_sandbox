@@ -1,0 +1,11 @@
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\OrderCommunicationHost.exe.config
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\OrderCommunicationHost.exe
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\OrderCommunicationHost.pdb
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\wcfCommunication.dll
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\wcfCommunication.pdb
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\bin\Debug\wcfCommunication.dll.config
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\obj\Debug\OrderCommunicationHost.csprojAssemblyReference.cache
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\obj\Debug\OrderCommunicationHost.csproj.CoreCompileInputs.cache
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\obj\Debug\OrderCommunicationHost.csproj.CopyComplete
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\obj\Debug\OrderCommunicationHost.exe
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderCommunicationHost\obj\Debug\OrderCommunicationHost.pdb
