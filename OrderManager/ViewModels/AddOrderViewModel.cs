@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -29,10 +30,10 @@ namespace OrderManager.ViewModels
             restrictions = new ObservableCollection<Restriction>
             {
                 new Restriction { City="Москва", DateTimeInfo=DateTime.Now, RestrictionsCount=5},
-                new Restriction{ City="Саратов", DateTimeInfo=DateTime.Now, RestrictionsCount=6},
+                new Restriction{ City="Саратов", DateTimeInfo=DateTime.Now, RestrictionsCount=4},
                 new Restriction{ City="Волгоград", DateTimeInfo=DateTime.Now, RestrictionsCount=5}
             };
-            Application.Current.Resources.Add("Restrictions", restrictions);
+            Application.Current.Resources.Add("Restrictions", restrictions.ToList<Restriction>());
         }
 
         #region
@@ -44,7 +45,10 @@ namespace OrderManager.ViewModels
                 return editDate ??
                   (editDate = new RelayCommand(obj =>
                   {
-                      //DateTime date = (DateTime)obj;
+                      if (!(obj is Restriction)) return;
+                      var r = obj as Restriction;
+                      //Restrictions.Add(r);
+                      Application.Current.Resources["Restrictions"] = Restrictions;
                       Console.WriteLine(    "OKKK");
                   }));
             }

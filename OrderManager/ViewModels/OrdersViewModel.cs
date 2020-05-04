@@ -1,4 +1,5 @@
-﻿using OrderManager.Models;
+﻿using OrderManager.Commands;
+using OrderManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace OrderManager.ViewModels
 {
@@ -40,6 +42,30 @@ namespace OrderManager.ViewModels
             orders.CollectionChanged += Orders_CollectionChanged;
         }
 
+        private RelayCommand editDate;
+        public RelayCommand EditDate
+        {
+            get
+            {
+                return editDate ??
+                  (editDate = new RelayCommand(obj =>
+                  {
+                      if (!(obj is Order)) return;
+                      Order order = (Order)obj;
+                      var restr = Application.Current.Resources["Restrictions"] as List<Restriction>;
+                      var underRestrict = OrderUnderRestrict(order, restr);
+                      if (underRestrict)
+                      {
+                          MessageBox.Show($"{order.City}: {order.Address}: {order.MeasuringDate} - не попадает в лимит");
+                      }
+                      Console.WriteLine("OKKK");
+                  }));
+            }
+        }
+
+
+
+
         private static void Orders_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //if (App.client != null)
@@ -70,12 +96,12 @@ namespace OrderManager.ViewModels
             var city = order.City;
             var date = order.MeasuringDate;
             var orders = Orders.Select(i => i.City == city && i.MeasuringDate == date);
-            var restriction = restr.FirstOrDefault(i => i.City == city && i.DateTimeInfo == date);
+            var restriction = restr.FirstOrDefault(i => i.City == city && i.DateTimeInfo.Date == date.Date);
             
-            if (restriction == null) return true;
-            if (orders.Count() >= restriction.RestrictionsCount) return false;
+            if (restriction == null) return false;
+            if (orders.Count() >= restriction.RestrictionsCount) return true;
 
-            return true;
+            return false;
         }
 
 

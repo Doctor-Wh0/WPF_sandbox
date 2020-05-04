@@ -7,53 +7,27 @@
              xmlns:local="clr-namespace:OrderManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <CollectionViewSource x:Name="RestrictionsList" x:Key="RestrictionsList" Source="{Binding Restrictions}" >
-        <i:Interaction.Triggers>
-                <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
-                            , RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                CommandParameter="{Binding}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </CollectionViewSource>
-    </UserControl.Resources>
     <Grid Background="AliceBlue">
-        <DataGrid ItemsSource="{Binding Source={StaticResource RestrictionsList}}">
-            <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="CellEndEdit">
-                    <i:InvokeCommandAction Command="{Binding EditDate}" CommandParameter="{Binding Text, ElementName=DateField}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>-->
-            <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
-                            , RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                CommandParameter="{Binding}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>-->
-        </DataGrid>
-
-
-        <!--<DataGrid x:Name="OrderList" ItemsSource="{Binding Restrictions}" AutoGenerateColumns="False" Margin="10 0">
+        <DataGrid x:Name="OrderList" ItemsSource="{Binding Restrictions}" AutoGenerateColumns="False" Margin="10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="False" Header="Город" Width="100" Binding="{Binding Path=City}"/>
-                <DataGridTextColumn x:Name="DateField" IsReadOnly="False" Header="Дата" Width="100" Binding="{Binding Path=DateTimeInfo}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextChanged">
-                            <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
+                <DataGridTemplateColumn x:Name="DateField" IsReadOnly="False" Header="Дата" Width="100" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=DateTimeInfo}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
                             , RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                 CommandParameter="{Binding}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    --><!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="CellEditEnding">
-                            <i:InvokeCommandAction Command="{Binding EditDate}" CommandParameter="{Binding Text, ElementName=DateField}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>--><!--
-                </DataGridTextColumn>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn IsReadOnly="False" Header="Количество заявок" Width="100" Binding="{Binding Path=RestrictionsCount}"/>
             </DataGrid.Columns>
-        </DataGrid>-->
+        </DataGrid>
     </Grid>
 </UserControl>

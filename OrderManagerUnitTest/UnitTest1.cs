@@ -26,7 +26,7 @@ namespace OrderManagerUnitTest
             };
             var result = ordersVM.OrderUnderRestrict(testOrder, testRestrictions);
 
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, false);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace OrderManagerUnitTest
             };
             var result = ordersVM.OrderUnderRestrict(testOrder, testRestrictions);
 
-            Assert.AreEqual(result, false);
+            Assert.AreEqual(result, true);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace OrderManagerUnitTest
             };
             var result = ordersVM.OrderUnderRestrict(testOrder, testRestrictions);
 
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, false);
         }
     }
 }

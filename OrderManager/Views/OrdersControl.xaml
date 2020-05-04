@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:OrderManager.Views" xmlns:models="clr-namespace:OrderManager.Models"
              xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
              mc:Ignorable="d" 
@@ -11,9 +12,40 @@
         <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" Margin="10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="False" Header="Id" Width="50" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn IsReadOnly="False" Header="Город" Width="90" Binding="{Binding Path=City}"/>
+                <!--<DataGridTextColumn IsReadOnly="False" Header="Город" Width="90" Binding="{Binding Path=City}"/>-->
+                <DataGridTemplateColumn IsReadOnly="False" Header="Город" Width="100" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=City}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
+                            , RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn IsReadOnly="False" Header="Дата заявки" Width="100" Binding="{Binding Path=MeasuringOrderDate}"/>
-                <DataGridTextColumn IsReadOnly="False" Header="Дата замера" Width="100" Binding="{Binding Path=MeasuringDate}"/>
+                <!--<DataGridTextColumn IsReadOnly="False" Header="Дата замера" Width="100" Binding="{Binding Path=MeasuringDate}"/>-->
+                <DataGridTemplateColumn IsReadOnly="False" Header="Дата замера" Width="100" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=MeasuringDate}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
+                            , RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <DataGridTextColumn IsReadOnly="False" Header="Адрес" Width="90" Binding="{Binding Path=Address}"/>
                 <DataGridTextColumn IsReadOnly="False" Header="ФИО" Width="180" Binding="{Binding Path=FullName}"/>
                 <DataGridTextColumn IsReadOnly="False" Header="Телефон" Width="80" Binding="{Binding Path=Phone}"/>
