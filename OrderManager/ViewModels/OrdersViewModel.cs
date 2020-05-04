@@ -1,8 +1,10 @@
 ﻿using OrderManager.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace OrderManager.ViewModels
@@ -10,6 +12,7 @@ namespace OrderManager.ViewModels
     public class OrdersViewModel : IViewModel
     {
         ObservableCollection<Order> orders{get; set;}
+
 
         public ObservableCollection<Order> Orders
         {
@@ -60,6 +63,21 @@ namespace OrderManager.ViewModels
                     break;
             }
         }
+
+
+        public bool OrderUnderRestrict(Order order, List<Restriction> restr)
+        {
+            var city = order.City;
+            var date = order.MeasuringDate;
+            var orders = Orders.Select(i => i.City == city && i.MeasuringDate == date);
+            var restriction = restr.FirstOrDefault(i => i.City == city && i.DateTimeInfo == date);
+            
+            if (restriction == null) return true;
+            if (orders.Count() >= restriction.RestrictionsCount) return false;
+
+            return true;
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")

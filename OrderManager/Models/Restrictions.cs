@@ -14,19 +14,31 @@ namespace OrderManager.Models
                     this.Set(() => City, ref _city, value);
             }
         }
+        DateTime _dateTime;
+        public DateTime DateTimeInfo
+        {
+            get { return _dateTime; }
+            set
+            {
+                this.Set(() => DateTimeInfo, ref _dateTime, value);
+            }
+        }
 
         int _restrictions;
-        public int Restrictions
+        public int RestrictionsCount
         {
             get { return _restrictions; }
             set
             {
-                this.Set(() => Restrictions, ref _restrictions, value);
+                this.Set(() => RestrictionsCount, ref _restrictions, value);
             }
         }
-        public Restriction(String city, int restrictions)
+
+        public Restriction() { }
+        public Restriction(String city, DateTime date, int restrictions)
         {
             _city = city;
+            _dateTime = date;
             _restrictions = restrictions;
         }
     }
