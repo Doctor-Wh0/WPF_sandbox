@@ -10,7 +10,7 @@
     <Grid Background="AliceBlue" >
         <DataGrid x:Name="OrderList" ItemsSource="{Binding Restrictions}" AutoGenerateColumns="False"  CanUserAddRows="False" Margin="10 0">
             <DataGrid.Columns>
-                <!--<DataGridTextColumn IsReadOnly="False" Header="Город" Width="100" Binding="{Binding Path=City}"/>-->
+                <!--City-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Город" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -26,6 +26,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <!--Date-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Дата" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -42,7 +43,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <!--<DataGridTextColumn IsReadOnly="False" Header="Количество заявок" Width="100" Binding="{Binding Path=RestrictionsCount}"/>-->
+                <!--Orders Quantity-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Количество заявок" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

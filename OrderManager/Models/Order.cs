@@ -99,52 +99,5 @@ namespace OrderManager.Models
             MeasuringDate = date;
             IsDone = false;
         }
-
-
-        //private int id;
-        //private string name;
-        //private bool selected;
-
-        //public int Id
-        //{
-        //    get
-        //    {
-        //        return this.id;
-        //    }
-        //    set
-        //    {
-        //        this.Set(() => Id, ref id, value);
-        //    }
-        //}
-
-        //public string Name
-        //{
-        //    get
-        //    {
-        //        return this.name;
-        //    }
-        //    set
-        //    {
-        //        this.Set(() => Name, ref name, value);
-        //    }
-        //}
-
-        //public bool Selected
-        //{
-        //    get
-        //    {
-        //        return this.selected;
-        //    }
-        //    set
-        //    {
-        //        this.Set(() => Selected, ref selected, value);
-        //    }
-        //}
-
-        //public Order(int id, string name)
-        //{
-        //    this.id = id;
-        //    this.name = name;
-        //}
     }
 }

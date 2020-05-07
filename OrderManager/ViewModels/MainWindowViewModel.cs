@@ -1,22 +1,17 @@
 ﻿using OrderManager.Commands;
-using OrderManager.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace OrderManager.ViewModels
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
         List<UserControl> controls = new List<UserControl>();
-        List<Measurement> measurements = new List<Measurement>();
         List<IViewModel> viewModels = new List<IViewModel>();
-        //ServiceChat.ServiceChatClient client;
+        
         public ServiceChat.ServiceChatClient Client
         {
             get { return App.client; }
@@ -47,7 +42,7 @@ namespace OrderManager.ViewModels
             var chatVM = viewModels.FirstOrDefault(i => i is ChatViewModel);
             if(chatVM != null)
             {
-                //chatVM. Dispose methods in IViewModel
+                chatVM = null;
             }
         }
 

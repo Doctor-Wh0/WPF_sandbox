@@ -39,7 +39,7 @@ namespace OrderManager.ViewModels
 
 
 
-        #region
+        #region Commands
         private RelayCommand editDate;
         public RelayCommand EditDate
         {
@@ -52,7 +52,7 @@ namespace OrderManager.ViewModels
                       var r = obj as Restriction;
                       //Restrictions.Add(r);
                       Application.Current.Resources["Restrictions"] = Restrictions.ToList<Restriction>();
-                      Console.WriteLine(    "OKKK");
+                      //Console.WriteLine("Date is changed");
                   }));
             }
         }

@@ -13,6 +13,8 @@ namespace OrderCommunicationHost
             using (var host = new ServiceHost(typeof(wcfCommunication.ServiceChat)))
             {
                 host.Open();
+                
+                // Здесь я искал методы как загружать данные из файла в виде таблиц через ADO.NET и пересылать их при подключении к хосту  
 
                 //OleDbConnection StrCon = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\projects;Extended Properties=text");
                 //string Select1 = "SELECT * FROM [OrdersDataBase.txt]";

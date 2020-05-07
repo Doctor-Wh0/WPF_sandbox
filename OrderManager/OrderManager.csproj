@@ -80,9 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Models\Measurement.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Restrictions.cs" />
     <Compile Include="ViewModels\AddOrderViewModel.cs" />

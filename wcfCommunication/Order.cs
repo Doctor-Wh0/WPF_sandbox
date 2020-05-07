@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace wcfCommunication
 {
+    /// <summary>
+    /// Класс создан для дальнейшей работы с ADO.NET для пересылки клиентам, создавшим соединение, и запросившими данные через WCF.
+    /// </summary>
     [DataContract]
     public class Order
     {

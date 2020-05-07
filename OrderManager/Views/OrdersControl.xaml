@@ -10,10 +10,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="AliceBlue">
-        <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" Margin="10 0" CanUserAddRows="False">
+        <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" Margin="10 0" CanUserAddRows="False" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Id" Width="50" Binding="{Binding Path=Id}"/>
-                <!--Город-->
+                <!--City-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Город" Width="100" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -29,32 +29,42 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <!--<DataGridTextColumn IsReadOnly="False" Header="Дата заявки" Width="100" Binding="{Binding Path=MeasuringOrderDate}" />-->
-                <DataGridTemplateColumn Header="Дата заявки" Width="120">
+                <!--Order Date-->
+                <DataGridTemplateColumn Header="Дата заявки" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Path=MeasuringOrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0"/>
+                            <DatePicker SelectedDate="{Binding Path=MeasuringOrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <!--Date of measurement-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Дата замера" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Path=MeasuringDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0">
+                            <DatePicker SelectedDate="{Binding Path=MeasuringDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewKeyUp">
                                         <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
                                         , RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                 CommandParameter="{Binding}"/>
                                     </i:EventTrigger>
-
+                                    <i:EventTrigger EventName="CalendarClosed">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
+                                        , RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <!--<i:EventTrigger EventName="PreviewMouseMove">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
+                                        , RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>-->
                                 </i:Interaction.Triggers>
                             </DatePicker>
 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
+                <!--Address-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="Адрес" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -62,7 +72,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <!--<DataGridTextColumn IsReadOnly="False" Header="ФИО" Width="180" Binding="{Binding Path=FullName}"/>-->
+                <!--Full Name-->
                 <DataGridTemplateColumn IsReadOnly="False" Header="ФИО" Width="180" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

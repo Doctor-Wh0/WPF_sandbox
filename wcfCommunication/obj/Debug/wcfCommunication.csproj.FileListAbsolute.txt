@@ -4,3 +4,4 @@ C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\wcfCommuni
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\wcfCommunication\obj\Debug\wcfCommunication.csproj.CoreCompileInputs.cache
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\wcfCommunication\obj\Debug\wcfCommunication.dll
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\wcfCommunication\obj\Debug\wcfCommunication.pdb
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\wcfCommunication\obj\Debug\wcfCommunication.csprojAssemblyReference.cache

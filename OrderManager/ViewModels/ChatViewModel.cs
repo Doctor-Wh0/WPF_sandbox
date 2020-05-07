@@ -12,7 +12,6 @@ namespace OrderManager.ViewModels
     public class ChatViewModel : IViewModel, OrderManager.ServiceChat.IServiceChatCallback
     {
         public ObservableCollection<string> Messages { get; set; }
-        //ServiceChat.ServiceChatClient client;
         public ServiceChat.ServiceChatClient Client
         {
             get { return App.client; }
