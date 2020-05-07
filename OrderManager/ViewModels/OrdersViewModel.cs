@@ -52,8 +52,8 @@ namespace OrderManager.ViewModels
                   {
                       if (!(obj is Order)) return;
                       Order order = (Order)obj;
-                      var restr = Application.Current.Resources["Restrictions"] as ObservableCollection<Restriction>;
-                      var underRestrict = OrderUnderRestrict(order, restr.ToList<Restriction>());
+                      var restr = Application.Current.Resources["Restrictions"] as List<Restriction> ;
+                      var underRestrict = OrderUnderRestrict(order, restr);
                       if (underRestrict)
                       {
                           MessageBox.Show($"{order.City}: {order.Address}: {order.MeasuringDate} - не попадает в лимит");

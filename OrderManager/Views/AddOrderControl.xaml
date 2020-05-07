@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:OrderManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="AliceBlue">
+    <Grid Background="AliceBlue" >
         <DataGrid x:Name="OrderList" ItemsSource="{Binding Restrictions}" AutoGenerateColumns="False"  CanUserAddRows="False" Margin="10 0">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn IsReadOnly="False" Header="Город" Width="100" Binding="{Binding Path=City}"/>-->

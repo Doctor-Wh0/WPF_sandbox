@@ -36,6 +36,9 @@ namespace OrderManager.ViewModels
             Application.Current.Resources.Add("Restrictions", restrictions.ToList<Restriction>());
         }
 
+
+
+
         #region
         private RelayCommand editDate;
         public RelayCommand EditDate
@@ -48,7 +51,7 @@ namespace OrderManager.ViewModels
                       if (!(obj is Restriction)) return;
                       var r = obj as Restriction;
                       //Restrictions.Add(r);
-                      Application.Current.Resources["Restrictions"] = Restrictions;
+                      Application.Current.Resources["Restrictions"] = Restrictions.ToList<Restriction>();
                       Console.WriteLine(    "OKKK");
                   }));
             }

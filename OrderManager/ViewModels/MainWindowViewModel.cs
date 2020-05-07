@@ -87,7 +87,6 @@ namespace OrderManager.ViewModels
                   (toAddOrderCommand = new RelayCommand(sender =>
                   {
                       SelectedViewModel = viewModels.FirstOrDefault(i => i is AddOrderViewModel);
-
                   }));
             }
         }
