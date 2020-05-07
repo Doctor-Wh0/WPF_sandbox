@@ -39,3 +39,4 @@ C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderManag
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderManager\obj\Debug\OrderManager.csproj.CopyComplete
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderManager\obj\Debug\OrderManager.exe
 C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderManager\obj\Debug\OrderManager.pdb
+C:\Users\gorde\OneDrive\Рабочий стол\TestTask\OrderManager\OrderManager\obj\Debug\OrderManager.csprojAssemblyReference.cache

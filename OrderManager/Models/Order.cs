@@ -87,7 +87,7 @@ namespace OrderManager.Models
         }
 
         #endregion
-        public Order() { }
+        public Order() { MeasuringOrderDate = DateTime.Now; MeasuringDate = DateTime.Now; }
         public Order(String name, String addr, String city, String phone, DateTime date)
         {
             Id = id++;

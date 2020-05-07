@@ -54,6 +54,21 @@ namespace OrderManager.ViewModels
             }
         }
 
+        private RelayCommand addRestriction;
+        public RelayCommand AddRestriction
+        {
+            get
+            {
+                return addRestriction ??
+                  (addRestriction = new RelayCommand(obj =>
+                  {
+                      restrictions.Add(new Restriction() { DateTimeInfo = DateTime.Now }) ;
+                  }));
+            }
+        }
+
+
+
         #endregion
 
 

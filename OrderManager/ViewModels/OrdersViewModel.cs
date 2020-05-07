@@ -52,8 +52,8 @@ namespace OrderManager.ViewModels
                   {
                       if (!(obj is Order)) return;
                       Order order = (Order)obj;
-                      var restr = Application.Current.Resources["Restrictions"] as List<Restriction>;
-                      var underRestrict = OrderUnderRestrict(order, restr);
+                      var restr = Application.Current.Resources["Restrictions"] as ObservableCollection<Restriction>;
+                      var underRestrict = OrderUnderRestrict(order, restr.ToList<Restriction>());
                       if (underRestrict)
                       {
                           MessageBox.Show($"{order.City}: {order.Address}: {order.MeasuringDate} - не попадает в лимит");
@@ -62,7 +62,29 @@ namespace OrderManager.ViewModels
                   }));
             }
         }
+        private RelayCommand addRow;
+        public RelayCommand AddRow
+        {
+            get
+            {
+                return addRow ??
+                  (addRow = new RelayCommand(obj =>
+                  {
+                      //if (!(obj is Order)) return;
+                      //Order order = (Order)obj;
+                      //var restr = Application.Current.Resources["Restrictions"] as List<Restriction>;
+                      //var underRestrict = OrderUnderRestrict(order, restr);
+                      //if (underRestrict)
+                      //{
+                      //    MessageBox.Show($"{order.City}: {order.Address}: {order.MeasuringDate} - не попадает в лимит");
+                      //}
+                      //Console.WriteLine("OKKK");
 
+                      orders.Add(new Order());
+                      Console.WriteLine("OKKK");
+                  }));
+            }
+        }
 
 
 
@@ -95,7 +117,7 @@ namespace OrderManager.ViewModels
         {
             var city = order.City;
             var date = order.MeasuringDate;
-            var orders = Orders.Select(i => i.City == city && i.MeasuringDate == date);
+            var orders = Orders.Where(i=> i.City == city && i.MeasuringDate.Date == date.Date).Select(i => i);
             var restriction = restr.FirstOrDefault(i => i.City == city && i.DateTimeInfo.Date == date.Date);
             
             if (restriction == null) return false;
