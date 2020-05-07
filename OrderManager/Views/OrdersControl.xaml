@@ -6,9 +6,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:OrderManager.Views" xmlns:models="clr-namespace:OrderManager.Models"
-             xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:converter="clr-namespace:OrderManager.converter"
+             xmlns:col="clr-namespace:System.Collections;assembly=mscorlib" xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converter:DateTimeToDateConverter x:Key="MyConvertion" />
+    </UserControl.Resources>
     <Grid Background="AliceBlue">
         <DataGrid x:Name="OrderList" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" Margin="10 0" CanUserAddRows="False" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -41,7 +45,8 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Дата замера" Width="120" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Path=MeasuringDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" >
+                            <DatePicker 
+                                SelectedDate="{Binding Path=MeasuringDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewKeyUp">
                                         <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
@@ -53,11 +58,6 @@
                                         , RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                 CommandParameter="{Binding}"/>
                                     </i:EventTrigger>
-                                    <!--<i:EventTrigger EventName="PreviewMouseMove">
-                                        <i:InvokeCommandAction Command="{Binding DataContext.EditDate  
-                                        , RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                CommandParameter="{Binding}"/>
-                                    </i:EventTrigger>-->
                                 </i:Interaction.Triggers>
                             </DatePicker>
 
@@ -100,7 +100,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-        <Button Content="Добавить" Command="{Binding AddRow}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Margin="50" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Content="Добавить" Command="{Binding AddRow}"  Width="150" Margin="50" />
+            <Button Content="Проверить на лимит" Command="{Binding LimitTestAll}" Width="200" Margin="50" />
+        </StackPanel>
+        
     </Grid>
 </UserControl>

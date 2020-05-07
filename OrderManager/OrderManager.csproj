@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="converter\Converter.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Restrictions.cs" />
     <Compile Include="ViewModels\AddOrderViewModel.cs" />

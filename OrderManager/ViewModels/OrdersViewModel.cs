@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 
 namespace OrderManager.ViewModels
 {
     public class OrdersViewModel : IViewModel
     {
         ObservableCollection<Order> orders{get; set;}
-
+        List<Restriction> restr = new List<Restriction>();
 
         public ObservableCollection<Order> Orders
         {
@@ -50,9 +53,10 @@ namespace OrderManager.ViewModels
                 return editDate ??
                   (editDate = new RelayCommand(obj =>
                   {
+                      
                       if (!(obj is Order)) return;
                       Order order = (Order)obj;
-                      var restr = Application.Current.Resources["Restrictions"] as List<Restriction> ;
+                      restr = Application.Current.Resources["Restrictions"] as List<Restriction> ;
                       var underRestrict = OrderUnderRestrict(order, restr);
                       if (underRestrict)
                       {
@@ -76,6 +80,42 @@ namespace OrderManager.ViewModels
             }
         }
 
+        private RelayCommand limitTestAll;
+        public RelayCommand LimitTestAll
+        {
+            get
+            {
+                return limitTestAll ??
+                  (limitTestAll = new RelayCommand(obj =>
+                  {
+                      Task.Factory.StartNew(()=> {
+                          string message = "";
+                          restr.ForEach(x =>
+                          {
+                              var orders = Orders.Where(i => i.City == x.City && i.MeasuringDate.Date == x.DateTimeInfo.Date).Select(i => i).OrderBy(i => i.MeasuringOrderDate).Reverse().ToList();
+                              if (orders.Count() > x.RestrictionsCount)
+                              {
+                                  for (byte z = 0; z < (orders.Count() - x.RestrictionsCount); z++)
+                                  {
+                                      var ord = orders.ElementAt(z);
+                                      message += $"Заявка от {ord.MeasuringOrderDate} на замер {ord.MeasuringDate}, {ord.City}, {ord.Address} превышает лимит заявок.\n";
+                                  }
+
+                              }
+                          });
+                          if (message == "")
+                          {
+                              MessageBox.Show("Лимиты заявок не превышены");
+                          }
+                          else
+                          {
+                              MessageBox.Show(message);
+                          }
+                      });
+
+                  }));
+            }
+        }
 
 
         private static void Orders_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
